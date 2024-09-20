@@ -5,6 +5,7 @@ import com.acmerobotics.roadrunner.Action;
 import com.acmerobotics.roadrunner.ParallelAction;
 import com.acmerobotics.roadrunner.Pose2d;
 import com.acmerobotics.roadrunner.SequentialAction;
+import com.acmerobotics.roadrunner.TranslationalVelConstraint;
 import com.acmerobotics.roadrunner.Vector2d;
 import com.acmerobotics.roadrunner.ftc.Actions;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
@@ -39,15 +40,25 @@ public class RisingTidesAuto extends LinearOpMode {
 
         // @formatter:off
         trajectoryAction0 = drive.actionBuilder(startingPose)
-                .lineToX(58)
-                .lineToX(-60)
-                .strafeTo(new Vector2d(-60,12))
-                .setTangent(Math.toRadians(0))
-                .lineToX(58)
-                .lineToX(-60)
-                .strafeToConstantHeading(new Vector2d(-60,58))
-                .setTangent(Math.toRadians(0))
-                .lineToX(58)
+                .lineToX(-51,
+                        // only override velocity constraint
+                        new TranslationalVelConstraint(20.0))
+                .lineToX(-56,
+                        // only override velocity constraint
+                        new TranslationalVelConstraint(20.0))
+//                .lineToX(58)
+//                        // only override velocity constraint
+//                        new TranslationalVelConstraint(20.0))
+//                .lineToX(-60,
+                        // only override velocity constraint
+//                        new TranslationalVelConstraint(20.0))
+//                .strafeTo(new Vector2d(-60,12))
+//                .setTangent(Math.toRadians(0))
+//                .lineToX(58)
+//                .lineToX(-60)
+//                .strafeToConstantHeading(new Vector2d(-60,58))
+//                .setTangent(Math.toRadians(0))
+//                .lineToX(58)
                 .build();
 //        trajectoryAction1 = drive.actionBuilder(drive.pose)
 //                .lineToYSplineHeading(33, Math.toRadians(0))
